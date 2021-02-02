@@ -1,0 +1,19 @@
+{
+    "name": "vitorgga/mysql-binlog-analyzer",
+    "description": "MySQL Binlog Analyzer",
+    "type": "project",
+    "authors": [
+        {
+            "name": "VitorGGA",
+            "email": "vitorgga@gmail.com"
+        }
+    ],    
+    "require": {
+        "symfony/console": "^5.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app"
+        }
+    }  
+}
