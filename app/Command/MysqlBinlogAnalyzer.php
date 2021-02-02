@@ -12,6 +12,11 @@ class MysqlBinlogAnalyzer extends Command
 {
     protected static $defaultName = 'analyzer';
 
+    /**
+     * Symfony command configure options
+     *
+     * @return void
+     */
     protected function configure()
     {
         $this
@@ -21,6 +26,13 @@ class MysqlBinlogAnalyzer extends Command
             ->addArgument('file', InputArgument::OPTIONAL, 'The name of the file to analyze');
     }
 
+    /**
+     * Symfony run function
+     *
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return void
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         // CLEAR CONSOLE
@@ -45,6 +57,14 @@ class MysqlBinlogAnalyzer extends Command
         return Command::SUCCESS;
     }
 
+    /**
+     * Printer binlog analyzer informations
+     *
+     * @param SymfonyStyle $io
+     * @param OutputInterface $output
+     * @param array $a_total
+     * @return void
+     */
     private function printer($io, $output, $a_total = [])
     {
         $total = array_sum($a_total);
@@ -67,6 +87,13 @@ class MysqlBinlogAnalyzer extends Command
         $io->newLine();
     }
 
+    /**
+     * Extract binlog informations and send to a array to count usage
+     *
+     * @param SymfonyStyle $io
+     * @param string $file filename to binlog extracted file
+     * @return array key = sql function, value = usage count
+     */
     private function extract($io, $file = '')
     {
         if (!file_exists($file)) {
